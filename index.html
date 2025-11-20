@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로컬 스파클 | 지역 콘텐츠 마케팅 코디네이터</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: #ffffff;
+            color: #37474F;
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            z-index: 1000;
+            padding: 20px 0;
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: #F44336;
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: #37474F;
+            font-weight: 700;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: #F44336;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 0;
+            background: linear-gradient(135deg, #fff 0%, #fff9f8 100%);
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 900;
+            color: #37474F;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero .accent {
+            color: #F44336;
+            display: block;
+            font-size: 64px;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: #37474F;
+            margin-bottom: 40px;
+            line-height: 1.8;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #F44336;
+            color: white;
+            padding: 20px 50px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(244, 67, 54, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(244, 67, 54, 0.4);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 900;
+            color: #37474F;
+            margin-bottom: 20px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Problem Section */
+        #problem {
+            background: #fafafa;
+        }
+        
+        .problem-intro {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #F44336;
+            margin-bottom: 60px;
+            line-height: 1.6;
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .problem-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .problem-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .problem-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #37474F;
+            margin-bottom: 15px;
+        }
+        
+        .problem-card p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666;
+        }
+        
+        .problem-conclusion {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: #37474F;
+            margin-top: 60px;
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            border-left: 5px solid #F44336;
+        }
+        
+        /* Solution Section */
+        #solution {
+            background: linear-gradient(135deg, #F44336 0%, #ff6b5f 100%);
+            color: white;
+        }
+        
+        #solution .section-title,
+        #solution .section-subtitle {
+            color: white;
+        }
+        
+        .solution-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-top: 60px;
+        }
+        
+        .solution-text h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .solution-text p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .solution-visual {
+            background: rgba(255,255,255,0.1);
+            padding: 60px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 48px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .formula {
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+        
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .benefit-card {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            border-top: 5px solid #F44336;
+            transition: all 0.3s;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(244, 67, 54, 0.2);
+        }
+        
+        .benefit-number {
+            font-size: 48px;
+            font-weight: 900;
+            color: #F44336;
+            margin-bottom: 20px;
+        }
+        
+        .benefit-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #37474F;
+            margin-bottom: 15px;
+        }
+        
+        .benefit-card p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666;
+        }
+        
+        /* Trust Section */
+        #trust {
+            background: #fafafa;
+        }
+        
+        .trust-content {
+            background: white;
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            margin-top: 40px;
+        }
+        
+        .trust-item {
+            margin-bottom: 40px;
+        }
+        
+        .trust-item h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #37474F;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .trust-item h3::before {
+            content: '✅';
+            font-size: 28px;
+        }
+        
+        .trust-item p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666;
+            padding-left: 38px;
+        }
+        
+        /* Pricing Section */
+        #pricing {
+            background: linear-gradient(135deg, #37474F 0%, #546e7a 100%);
+            color: white;
+        }
+        
+        #pricing .section-title,
+        #pricing .section-subtitle {
+            color: white;
+        }
+        
+        .pricing-table {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .pricing-card {
+            background: white;
+            color: #37474F;
+            padding: 50px;
+            border-radius: 20px;
+            position: relative;
+        }
+        
+        .pricing-card.featured {
+            border: 5px solid #F44336;
+            transform: scale(1.05);
+        }
+        
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #F44336;
+            color: white;
+            padding: 8px 30px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        
+        .pricing-card h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+        }
+        
+        .pricing-features li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 16px;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-price {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 900;
+            color: #F44336;
+            margin: 30px 0;
+        }
+        
+        .pricing-note {
+            background: #fff9f8;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border-left: 5px solid #F44336;
+        }
+        
+        .pricing-note p {
+            color: white;
+            font-size: 16px;
+            line-height: 1.8;
+            font-weight: 700;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 100px 0;
+            background: linear-gradient(135deg, #F44336 0%, #ff6b5f 100%);
+            color: white;
+        }
+        
+        .cta-section h2 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 30px;
+        }
+        
+        .cta-section p {
+            font-size: 20px;
+            line-height: 1.8;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button-white {
+            background: white;
+            color: #F44336;
+        }
+        
+        .cta-button-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background: #37474F;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        footer p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 15px;
+                font-size: 12px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero .accent {
+                font-size: 42px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .solution-content,
+            .pricing-table {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">로컬 스파클</div>
+            <ul class="nav-menu">
+                <li><a href="#problem">문제</a></li>
+                <li><a href="#solution">솔루션</a></li>
+                <li><a href="#benefits">혜택</a></li>
+                <li><a href="#trust">신뢰</a></li>
+                <li><a href="#pricing">가격</a></li>
+                <li><a href="#cta">신청</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>
+                <span class="accent">낡고 지루한 이미지는 이제 그만!</span>
+                로컬 스파클
+            </h1>
+            <p>
+                인플루언서 감성으로 당신의 지역 상품을 '핫'하게 코디하고,<br>
+                2030 트렌드 고객을 끌어모으세요.
+            </p>
+            <a href="#cta" class="cta-button">🔥 지금 무료 진단 신청하기</a>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem">
+        <div class="container">
+            <h2 class="section-title">왜 우리 가게는 안 될까요?</h2>
+            <p class="problem-intro">
+                "우리 가게/지역 상품, 왜 아무리 올려도 '좋아요' 10개도 안 되죠?"
+            </p>
+            <p class="section-subtitle">
+                지역 소상공인과 사업가님들, 잠재 고객은 많습니다.<br>
+                하지만 20~30대 트렌드 고객들은 '촌스러운' 이미지와 콘텐츠에는 클릭조차 하지 않습니다.
+            </p>
+            
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">❌</div>
+                    <h3>문제 1: 콘텐츠의 부재 또는 노후화</h3>
+                    <p>
+                        노출할 콘텐츠 자체가 없거나, 예전 방식의 투박한 홍보물만 남아있습니다.
+                    </p>
+                </div>
+                
+                <div class="problem-card">
+                    <div class="problem-icon">❌</div>
+                    <h3>문제 2: 트렌드 감각의 부재</h3>
+                    <p>
+                        뷰티/패션 트렌드 변화 속도를 따라가지 못해, 젊은 고객들이 원하는 '힙'한 감성을 담아내지 못하고 있습니다.
+                    </p>
+                </div>
+                
+                <div class="problem-card">
+                    <div class="problem-icon">❌</div>
+                    <h3>문제 3: 마케팅 채널의 한계</h3>
+                    <p>
+                        블로그 체험단 이상의 바이럴 채널을 활용하지 못하고, 잠재 고객의 유입이 끊깁니다.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="problem-conclusion">
+                당신의 지역 상품/공간의 '진짜 매력'은 묻혀 있습니다.<br>
+                오직 코디네이션의 문제입니다.
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution">
+        <div class="container">
+            <h2 class="section-title">✨ 로컬 스파클의 솔루션</h2>
+            <p class="section-subtitle">
+                지역의 콘텐츠를 인플루언서처럼 만듭니다
+            </p>
+            
+            <div class="solution-content">
+                <div class="solution-text">
+                    <h3>🔑 핵심 가치</h3>
+                    <p>
+                        저희 지역 콘텐츠 연계형 마케팅 코디네이터는 뷰티/패션/라이프스타일 감각을 총동원하여 
+                        지역 상품과 공간을 '가장 트렌디한 콘텐츠'로 탈바꿈시키고, 고객을 유입시키는 전문적인 솔루션입니다.
+                    </p>
+                    <p>
+                        단순히 사진을 찍는 것을 넘어, 상품의 포장, 디스플레이, 사용 방식까지 트렌디하게 코디하여 
+                        고객의 구매 욕구를 자극합니다.
+                    </p>
+                </div>
+                
+                <div class="solution-visual">
+                    <div>📍 + 👗 + 📱</div>
+                    <div class="formula">
+                        지역 자원 + 트렌드 코디네이션<br>
+                        = 즉각적인 바이럴 매력
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits">
+        <div class="container">
+            <h2 class="section-title">로컬 스파클로 얻는 3가지 핵심 변화</h2>
+            <p class="section-subtitle">
+                더 이상 돈만 쓰는 광고가 아닙니다
+            </p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-number">01</div>
+                    <h3>매출로 이어지는 '바이럴 콘텐츠' 확보</h3>
+                    <p>
+                        뷰티/패션 감각으로 코디된 고품질의 비주얼 콘텐츠(사진, 릴스/쇼츠)를 확보하여, 
+                        고객이 자발적으로 공유하고 싶게 만듭니다.
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-number">02</div>
+                    <h3>젊은 고객층(2030) 유입 채널 구축</h3>
+                    <p>
+                        트렌디한 스타일링과 콘텐츠 기획으로 인스타그램, 틱톡 등 젊은 고객이 모이는 채널에서 
+                        노출도를 급격히 높여 신규 고객 유입의 물꼬를 틔웁니다.
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-number">03</div>
+                    <h3>브랜드 가치 '업그레이드'</h3>
+                    <p>
+                        촌스럽거나 낡은 이미지를 벗고, 전문 코디네이션을 통해 세련되고 감각적인 브랜드 아이덴티티를 구축합니다. 
+                        이는 장기적인 고객 신뢰와 프리미엄 이미지 구축의 기반이 됩니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section id="trust">
+        <div class="container">
+            <h2 class="section-title">검증된 전문성</h2>
+            <p class="section-subtitle">
+                전문 기관과 함께 검증하는 '지역 마케팅 코디네이션'의 힘
+            </p>
+            
+            <div class="trust-content">
+                <div class="trust-item">
+                    <h3>MVP 초기 검증 계획</h3>
+                    <p>
+                        <strong>협력 대상:</strong> 지역 전통시장 상점, 청년 창업 카페/공방 등 5곳 한정 초기 MVP 베타 테스트 진행 (1개월)
+                    </p>
+                    <p>
+                        <strong>검증 목표:</strong> 코디네이션 전후 인스타그램 노출 지표(도달률, 저장 수) 및 매출 증대 효과 측정
+                    </p>
+                </div>
+                
+                <div class="trust-item">
+                    <h3>비전 및 협력 기관</h3>
+                    <p>
+                        <strong>협력 방향:</strong> 지역 문화재단 및 청년 창업 지원센터와의 협력을 통해 서비스 전문성을 강화하고, 
+                        안정적인 지역 네트워크를 확보할 예정입니다.
+                    </p>
+                    <p>
+                        <strong>목표:</strong> 지역 콘텐츠의 잠재력을 극대화하여, 성공 사례를 기반으로 정부 지원 사업 연계를 목표합니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <div class="container">
+            <h2 class="section-title">🚀 초기 베타 테스터 5곳 한정</h2>
+            <p class="section-subtitle">
+                당신의 성공이 곧 저희의 성공입니다
+            </p>
+            
+            <div class="pricing-table">
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">5팀 한정 특별가</div>
+                    <h3>베타 테스터 특별 조건</h3>
+                    <ul class="pricing-features">
+                        <li>📅 4주 집중 코디네이션</li>
+                        <li>🎯 3가지 핵심 상품/공간 코디</li>
+                        <li>📸 고해상도 화보급 사진 10컷</li>
+                        <li>🎬 숏폼 영상 2개 (릴스/쇼츠)</li>
+                        <li>📚 코디네이션 노하우 PDF</li>
+                        <li>💬 1:1 맞춤 컨설팅</li>
+                    </ul>
+                    <div class="pricing-price">정가 대비 70% 할인</div>
+                    <p style="text-align: center; color: #F44336; font-weight: 700;">별도 문의</p>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>정규 서비스 (예정)</h3>
+                    <ul class="pricing-features">
+                        <li>📅 4주 또는 8주 계약</li>
+                        <li>🎯 협의</li>
+                        <li>📸 별도 비용 부과</li>
+                        <li>🎬 별도 비용 부과</li>
+                        <li>📚 제외</li>
+                        <li>💬 제외</li>
+                    </ul>
+                    <div class="pricing-price">월 150만원~</div>
+                </div>
+            </div>
+            
+            <div class="pricing-note">
+                <p>
+                    ⚠️ 중요: 5곳 한정 마감 시, 정규 서비스 가격이 적용됩니다. 지금 바로 문의하세요.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="cta-section">
+        <div class="container">
+            <h2>잠재력을 트렌디하게 폭발시키세요!</h2>
+            <p>
+                낡은 콘텐츠는 고객을 외면하게 만듭니다. 로컬 스파클은 당신의 상품/공간에 
+                가장 트렌디한 뷰티/패션 감각의 옷을 입혀, 2030 고객들이 스스로 찾아오고 
+                공유하게 만드는 강력한 마케팅 코디네이션을 제공합니다.
+                <br><br>
+                더 이상 고민하지 마세요. 클릭 한 번으로 당신의 비즈니스가 '핫'해집니다.
+            </p>
+            <a href="mailto:contact@localsparkle.kr" class="cta-button cta-button-white">
+                🔥 초기 5팀 한정! 무료 진단 및 특별 조건 문의하기
+            </a>
+            <p style="margin-top: 30px; font-size: 16px;">문의는 24시간 이내에 회신드립니다.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 로컬 스파클 (Local Sparkle). All rights reserved.</p>
+            <p style="margin-top: 10px;">지역 콘텐츠 연계형 마케팅 코디네이터</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
